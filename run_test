@@ -1,0 +1,6 @@
+clear
+make clean
+make myspice
+rm -rf out.csv
+clear
+myspice test19.ckt
