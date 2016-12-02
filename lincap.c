@@ -146,12 +146,12 @@ fptr=fopen("out.csv","a");
     if(time_step_count< 3)
      { 
         k = time_step_count;
-        vpast[0] = predictor;
+        vpast[0] = vpast[1];
       }
     else
      { 
-        k = 2; 
-        vpast[0] = 2*vpast[1] - vpast[2];
+        k = 4;
+        predictor(vpast,k); 
       }
 
 
