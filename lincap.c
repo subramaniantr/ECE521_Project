@@ -146,7 +146,7 @@ fptr=fopen("out.csv","a");
     if(time_step_count< 3)
      { 
         k = time_step_count;
-        vpast[0] = vpast[1];
+        vpast[0] = predictor;
       }
     else
      { 
