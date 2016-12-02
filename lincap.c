@@ -76,7 +76,7 @@ int numLinCap;
 }
 
 
-void loadLinCap(Matrix, Rhs, LinCap, numLinCap, Xk,h ,time_step_count)
+void loadLinCap(Matrix, Rhs, LinCap, numLinCap, Xk,h ,time_step_count,XP0,XP1,XP2,XP3,XP4,XP5,XP6)
 char *Matrix;
 double *Rhs;
 lincap *LinCap[];
@@ -84,6 +84,7 @@ int numLinCap;
 double* Xk;
 double h;
 int time_step_count;
+double *XP6,*XP5,*XP4,*XP3,*XP2,*XP1,*XP0;
 {
   int i, p, n, k;
   lincap *inst;
@@ -91,7 +92,7 @@ int time_step_count;
   double  Vcap,Vp;
   double Capval;
   int na, nb;
-
+  double vpast[7];
 FILE *fptr;
 fptr=fopen("out.csv","a");
 
@@ -107,8 +108,20 @@ fptr=fopen("out.csv","a");
       // Calculate voltage across capacitor. It is assumed that 
     // at the first iteration of a new timepoint
       // Sol has the solution from the previous timepoint
-      Vcap = Xk[na]-Xk[nb];
-     
+      vpast[6] = XP6[na]-XP6[nb];
+      vpast[5] = XP5[na]-XP5[nb];
+      vpast[4] = XP4[na]-XP4[nb];
+      vpast[3] = XP3[na]-XP3[nb];
+      vpast[2] = XP2[na]-XP2[nb];
+      vpast[1] = XP1[na]-XP1[nb];
+ 
+//    printf("%f \n",vpast[6]); 
+//    printf("%f \n",vpast[5]); 
+//    printf("%f \n",vpast[4]); 
+//    printf("%f \n",vpast[3]); 
+//    printf("%f \n",vpast[2]); 
+//    printf("%f \n",vpast[1]); 
+//    printf("%f \n",vpast[0]); 
 
 
 
@@ -117,12 +130,6 @@ fptr=fopen("out.csv","a");
 ///INTEGRATION METHOD SHOULD BE EXECUTED ONLY ONCE IN A TIME STEP////////
       if(iter_counter == 0) {  
           //SHIFTING OLD VALUES 
-          inst->vpast[5] = inst->vpast[4];
-          inst->vpast[4] = inst->vpast[3];
-          inst->vpast[3] = inst->vpast[2];
-          inst->vpast[2] = inst->vpast[1];
-          inst->vpast[1] = inst->vpast[0];
-          inst->vpast[0] = Vcap; 
          // first iteration of a given timepoint
          if(time_step_count == 1) {
              // first time point
@@ -131,14 +138,6 @@ fptr=fopen("out.csv","a");
              inst->beta = 0;
              Vp = 0;
              k = 1;
-     /*    
-         if(i ==3)   //RING OSCILLATOR
-             Vc=1; 
-         if(i ==2)   //MOS COLPITT'S OSCILLATOR
-             Vc=-1.5; 
-         if(i ==2)   //BJT COLPITT'S OSCILLATOR
-             Vc=-0.5; 
-     */
          }
 
 ////////// SUBSEQUENT LMS ITERATION(time points)///////////////////////
@@ -147,24 +146,24 @@ fptr=fopen("out.csv","a");
     if(time_step_count>6)
      { 
         k = 2; 
-        Vp = 2*inst->vpast[0] - inst->vpast[1];
+        vpast[0] = 2*vpast[1] - vpast[1];
       }
     else
      { 
         k = 0;
-        Vp = inst->vpast[0];
+        vpast[0] = vpast[1];
       }
 
 
 
 
           
-             inst->vdot = (inst->alpha)*inst->vpast[0]+(inst->beta); 
+             inst->vdot = (inst->alpha)*vpast[0]+(inst->beta); 
 
          }
 ////////////////UPDATE THE NEW ALPHA AND BETA//////////////////////////
 
-         intgr8(inst->vpast,inst->vdot,h,&inst->alpha,&inst->beta,k);
+         intgr8(vpast,inst->vdot,h,&inst->alpha,&inst->beta,k);
       }//IF CONDITION ONLY EXECUTED WHEN NEWTON LOOP STARTS 
          //SEPARATING THE NEWTON FROM THE LMS
 

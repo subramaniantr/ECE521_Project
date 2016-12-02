@@ -25,6 +25,7 @@ int NumBranches = 0;
 int iter_counter;
 char **NodeArray;
 char **BranchArray;
+double time_points[6];
 
 double maximum(double a, double b)
 {
@@ -84,6 +85,7 @@ char **av;
     BOOLEAN foundError();
     int error, icheck;
     double norm_dx, norm_Sol_old, norm_Sol, Ea, Er;
+    double *XP6,*XP5,*XP4,*XP3,*XP2,*XP1,*XP0;
     double time, tstart, tstop, h;
     int tcount, tcountmax,conv_counter,conv_flag;
     int Fillins;
@@ -239,6 +241,13 @@ char **av;
     Rhs = CALLOC(double, numEqns+1);
     Sol = CALLOC(double, numEqns+1);
     Sol_old = CALLOC(double, numEqns+1);
+    XP6    = CALLOC(double, numEqns+1);
+    XP5    = CALLOC(double, numEqns+1);
+    XP4    = CALLOC(double, numEqns+1);
+    XP3    = CALLOC(double, numEqns+1);
+    XP2    = CALLOC(double, numEqns+1);
+    XP1    = CALLOC(double, numEqns+1);
+    XP0    = CALLOC(double, numEqns+1);
 
     /* do any preprocessing */
     setupRes(cktMatrix, Res, numRes);
@@ -282,9 +291,18 @@ for(tcount=1;tcount<tcountmax;tcount++)
 {
 ///////////////////////////////////////////NEWTON ALGORITHM/////////////////////////////////////////////////////////////////////////
  
-// Declaration and Initializing Norm variables as zero
-   
+//Shift the solutions through the queue   
+   for(i=1;i<=numEqns;i++)
+      {
+          XP6[i] = XP5[i];
+          XP5[i] = XP4[i];
+          XP4[i] = XP3[i];
+          XP3[i] = XP2[i];
+          XP2[i] = XP1[i];
+          XP1[i] = Sol[i]; 
+       }
 
+// Declaration and Initializing Norm variables as zero
    norm_dx = 100;
    norm_Sol_old  = 0;
    norm_Sol = 0;
@@ -307,12 +325,18 @@ while(conv_flag==0 || icheck==1){
     spClear(cktMatrix);
 
 
- // Clearing of Rhs
+  // Clearing of Rhs
  
    for(i=1;i<=numEqns;i++)
         Rhs[i]=0;
     
-    /* load circuit matrix */
+
+ 
+
+
+
+
+   /* load circuit matrix */
     loadRes(cktMatrix, Rhs, Res, numRes);
     loadIsrc(cktMatrix, Rhs, Isrc, numIsrc);
     loadVsrc(cktMatrix, Rhs, Vsrc, numVsrc);
@@ -326,7 +350,7 @@ while(conv_flag==0 || icheck==1){
     loadMosfet(cktMatrix, Rhs, Mosfet, numMosfet,Sol,tcount);
     loadDio(cktMatrix, Rhs, Dio, numDio,Sol, &icheck,tcount);
     loadBjt(cktMatrix, Rhs, Bjt, numBjt,Sol, &icheck,tcount);
-    loadLinCap(cktMatrix, Rhs, LinCap, numLinCap,Sol,h,tcount);
+    loadLinCap(cktMatrix, Rhs, LinCap, numLinCap,Sol,h,tcount,XP0,XP1,XP2,XP3,XP4,XP5,XP6);
     loadNonLinCap(cktMatrix, Rhs, NonLinCap, numNonLinCap,Sol,h,tcount);
     loadLinInd(cktMatrix, Rhs, LinInd, numLinInd,Sol,h,tcount);
 
