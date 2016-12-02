@@ -143,22 +143,22 @@ fptr=fopen("out.csv","a");
 ////////// SUBSEQUENT LMS ITERATION(time points)///////////////////////
 //////// USE THE OLD ALPHA BETA AND NEW V TO GET NEW V'////////////////
          else {
-    if(time_step_count>6)
+    if(time_step_count< 3)
      { 
-        k = 2; 
-        vpast[0] = 2*vpast[1] - vpast[1];
+        k = time_step_count;
+        vpast[0] = vpast[1];
       }
     else
      { 
-        k = 0;
-        vpast[0] = vpast[1];
+        k = 2; 
+        vpast[0] = 2*vpast[1] - vpast[2];
       }
 
 
 
 
           
-             inst->vdot = (inst->alpha)*vpast[0]+(inst->beta); 
+             inst->vdot = (inst->alpha)*vpast[1]+(inst->beta); 
 
          }
 ////////////////UPDATE THE NEW ALPHA AND BETA//////////////////////////
