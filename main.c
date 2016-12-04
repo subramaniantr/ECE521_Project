@@ -315,11 +315,8 @@ for(timeval=tstart;timeval<tstop;timeval=timeval+h)
           XP2[i] = XP1[i];
           XP1[i] = Sol[i]; 
        }
-
+printf("TCOUNT = %d \n\n",tcount);
 hflag = 2;
-//hflag = 2 if LE > allowable error
-//hflag = 1 if LE < min ERROR
-//hflag = 0 if between (min,max)
 while(hflag == 2)
 {//FOR TIME STEP CORRECTION
 
@@ -435,19 +432,20 @@ while(conv_flag==0 || icheck==1){
 
 
 hflag = LELinCap(LinCap, numLinCap, Sol);
-
 printf("HFLAG = %d\n\n\n",hflag);
 printf("*****************\n",hflag);
- //    if(0)
- //     {
- //     if(hflag == 2)
- //     h = h/8;
- //    else
- //     if(hflag == 1)
- //       h = 2*h;
- //      }
- //    else
-       hflag = 0;
+
+
+
+//    LOGIC FOR TIME STEP CORRECTION
+//
+//    if(hflag == 2)
+//    h = h/8;
+//   else
+//    if(hflag == 1)
+//      h = 2*h;
+//   else
+     hflag = 0;
 }//FOR TIME STEP CORRECTION
 
 ///////////PRINT WARNING : ACCURACY OF NUMBERS WILL AFFECT THE PLOTS///////////////
