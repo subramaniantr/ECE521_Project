@@ -143,7 +143,7 @@ fptr=fopen("out.csv","a");
 ////////// SUBSEQUENT LMS ITERATION(time points)///////////////////////
 //////// USE THE OLD ALPHA BETA AND NEW V TO GET NEW V'////////////////
          else {
-    if(time_step_count<5)
+    if(time_step_count<6)
      { 
         order = time_step_count;
         predictor(vpast,order); 
@@ -205,7 +205,7 @@ double h;
       na = inst->pNode;
       nb = inst->nNode;
       vcor = Xk[na]-Xk[nb];
-      LE = h*(inst->vpred - vcor)/(time_points[0]-time_points[order]);
+      LE = abs(h*(inst->vpred - vcor)/(time_points[0]-time_points[order]));
       printf("Local Error = %f\n\n", LE); 
      if(LE > 0.5)
       {
