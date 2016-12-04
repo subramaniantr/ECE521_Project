@@ -8,4 +8,5 @@ extern int NumBranches;
 extern int iter_counter;
 extern char **NodeArray;
 extern char **BranchArray;
-extern double time_points[6];
+extern double time_points[7];
+extern int order;

@@ -1,4 +1,7 @@
 #include<stdio.h>
+#include "defs.h"
+
+
 void predictor(x,k)
 double *x;
 int k;
@@ -9,12 +12,16 @@ float L[7];
 x[0]=0;
 
 m=1+k;       //number of parameters
+
+
 /////////////TEMPORARILY KEPT FOR CONST TIME STEP//////////////////
-      for(i=0;i<=m;i++)
-      t[m-i]=i; //current + m previous points
-   
-//   for(i=0;i<7;i++)
-//   printf("T[%d] = %d \n",i,t[i]);
+
+
+      for(i=0;i<=6;i++)
+        {
+        t[i]=6-i; //current + m previous points
+        printf("P  :t = %9.2g, time_points = %9.2g, i = %d \n",t[i],time_points[i],i);
+        }
    
    for(i=0;i<7;i++)
    if(i<m)
@@ -22,8 +29,6 @@ m=1+k;       //number of parameters
    else
    L[i]=0;
    
-//   for(i=0;i<7;i++)
-//   printf("L[%d] = %d \n",i,L[i]);
    
 for(i=1;i<=m;i++)  //go through all o+1 excluding current
   for(j=1;j<=m;j++)  //go through all o+1 excluding current
@@ -34,9 +39,6 @@ for(i=1;i<=m;i++)  //go through all o+1 excluding current
          }
 
     }
-
-// for(i=0;i<7;i++)
-// printf("L[%d]= %f \n",i,L[i]);
 
 ///////////PREDICTING///////////
 for(i=1;i<7;i++)

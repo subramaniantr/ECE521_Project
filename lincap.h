@@ -10,11 +10,11 @@ typedef struct lincap{
 
     double value;    //Cj0
     double vdot;
+    double vpred;
 
     double *ppp;     /*pointer to sparse-matrix location (pNode, pNode)*/
     double *ppn;     /*pointer to sparse-matrix location (pNode, nNode)*/
     double *pnp;     /*pointer to sparse-matrix location (nNode, nNode)*/
     double *pnn;     /*pointer to sparse-matrix location (nNode, pNode)*/
-    double vpast[6];
 } lincap ;
 

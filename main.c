@@ -25,7 +25,8 @@ int NumBranches = 0;
 int iter_counter;
 char **NodeArray;
 char **BranchArray;
-double time_points[6];
+double time_points[7];
+int order;
 
 double maximum(double a, double b)
 {
@@ -86,9 +87,9 @@ char **av;
     int error, icheck;
     double norm_dx, norm_Sol_old, norm_Sol, Ea, Er;
     double *XP6,*XP5,*XP4,*XP3,*XP2,*XP1,*XP0;
-    double time, tstart, tstop, h;
+    double timeval, tstart, tstop, h;
     int tcount, tcountmax,conv_counter,conv_flag;
-    int Fillins;
+    int hflag,Fillins;
     switch (ac) {
         case 2:
             inFile = av[1];
@@ -279,19 +280,29 @@ char **av;
 h = 5e-7;
 tstart = 0.0;
 tstop  = 5e-6;
-tcountmax = round((tstop-tstart)/h);
-printf("TCOUNT = %d",tcountmax);
 FILE *fptr;
 fptr=fopen("out.csv","a");
 
 
-
+tcount = 1;
 ////////////////////TRANSIENT START////////////////////
-for(tcount=1;tcount<tcountmax;tcount++)
+for(timeval=tstart;timeval<tstop;timeval=timeval+h)
 {
 ///////////////////////////////////////////NEWTON ALGORITHM/////////////////////////////////////////////////////////////////////////
  
 //Shift the solutions through the queue   
+      {
+          time_points[6] = time_points[5];
+          time_points[5] = time_points[4];
+          time_points[4] = time_points[3];
+          time_points[3] = time_points[2];
+          time_points[2] = time_points[1];
+          time_points[1] = time_points[0]; 
+          time_points[0] = timeval;
+
+          for(i=0;i<6;i++)
+          printf("time_point[%d]  = %9.9g \n",i,time_points[i]);
+      }
    for(i=1;i<=numEqns;i++)
       {
           XP6[i] = XP5[i];
@@ -410,15 +421,26 @@ while(conv_flag==0 || icheck==1){
 ///////////////////////////////////////////END NEWTON LOOP/////////////////////////////////////////////////////////////////////////
 
 
+
+
+
+//////////////////////LOCAL  ERROR CALCULATION ////////////////////////
+
+
+hflag = LELinCap(LinCap, numLinCap, Sol);
+printf("HFLAG = %d\n",hflag);
+
+
 ///////////PRINT WARNING : ACCURACY OF NUMBERS WILL AFFECT THE PLOTS///////////////
 
-time = (tcount)*h;
-fprintf(fptr,"%9.9g,",time);
+fprintf(fptr,"%9.9g,",timeval);
 for(i = 1; i<= numEqns; i++) {
     fprintf(fptr,"%9.9g, ",Sol[i]);
     }
 fprintf(fptr,"\n");
 
+
+tcount++;
 
 } //END OF TIME
 

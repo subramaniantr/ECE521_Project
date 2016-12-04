@@ -86,7 +86,7 @@ double h;
 int time_step_count;
 double *XP6,*XP5,*XP4,*XP3,*XP2,*XP1,*XP0;
 {
-  int i, p, n, k;
+  int i, p, n;
   lincap *inst;
   double Gk, Ik;
   double  Vcap,Vp;
@@ -131,39 +131,35 @@ fptr=fopen("out.csv","a");
       if(iter_counter == 0) {  
           //SHIFTING OLD VALUES 
          // first iteration of a given timepoint
-         if(time_step_count == 1) {
+         if(time_step_count == 0) {
              // first time point
              inst->vdot = 0;
              inst->alpha = 0;
              inst->beta = 0;
              Vp = 0;
-             k = 1;
+             order = 1;
          }
 
 ////////// SUBSEQUENT LMS ITERATION(time points)///////////////////////
 //////// USE THE OLD ALPHA BETA AND NEW V TO GET NEW V'////////////////
          else {
-    if(time_step_count< 3)
+    if(time_step_count< 5)
      { 
-        k = time_step_count;
-        vpast[0] = vpast[1];
+        order = time_step_count;
+        predictor(vpast,order); 
       }
     else
      { 
-        k = 4;
-        predictor(vpast,k); 
+        order = 5;
+        predictor(vpast,order); 
       }
-
-
-
-
-          
+       inst->vpred = vpast[0];
              inst->vdot = (inst->alpha)*vpast[1]+(inst->beta); 
 
          }
 ////////////////UPDATE THE NEW ALPHA AND BETA//////////////////////////
 
-         intgr8(vpast,inst->vdot,h,&inst->alpha,&inst->beta,k);
+         intgr8(vpast,inst->vdot,h,&inst->alpha,&inst->beta,order);
       }//IF CONDITION ONLY EXECUTED WHEN NEWTON LOOP STARTS 
          //SEPARATING THE NEWTON FROM THE LMS
 
@@ -188,4 +184,39 @@ fptr=fopen("out.csv","a");
               }
 
 fclose(fptr);
+}
+
+
+
+int LELinCap(LinCap, numLinCap, Xk, h)
+lincap *LinCap[];
+int numLinCap;
+double* Xk;
+double h;
+{
+  int flag,i,na,nb;
+  double LE, vcor;
+  lincap *inst;
+
+  
+     flag=0;
+  for(i = 1; i <= numLinCap; i++) {
+      inst = LinCap[i];
+      na = inst->pNode;
+      nb = inst->nNode;
+      vcor = Xk[na]-Xk[nb];
+      LE = h*(inst->vpred - vcor)/(time_points[0]-time_points[order]);
+      printf("Local Error = %f\n\n", LE); 
+     if(LE > 0.5)
+      {
+         flag=2;
+         break;
+      }
+    else if(LE <0.1)
+      {
+         flag=1; 
+      }
+    }
+   return flag;
+
 }
