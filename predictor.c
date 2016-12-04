@@ -19,7 +19,7 @@ m=1+k;       //number of parameters
 
       for(i=0;i<=6;i++)
         {
-        t[i]=6-i; //current + m previous points
+        t[i]=time_points[i];//6-i; //current + m previous points
         printf("P  :t = %9.2g, time_points = %9.2g, i = %d \n",t[i],time_points[i],i);
         }
    

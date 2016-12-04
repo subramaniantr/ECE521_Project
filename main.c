@@ -278,20 +278,28 @@ char **av;
 //  printf("Please enter the stop time : ");
 //  scanf("%f",&tstop );
 h = 5e-7;
-tstart = 0.0;
+tstart = 0;
 tstop  = 5e-6;
 FILE *fptr;
 fptr=fopen("out.csv","a");
 
 
 tcount = 1;
+
+
+
+      for(i=0;i<=6;i++)
+            { time_points[i] =-h*(i+1);
+             printf("I : time_point[%d]  = %9.9g \n",i,time_points[i]);
+   }
+
 ////////////////////TRANSIENT START////////////////////
 for(timeval=tstart;timeval<tstop;timeval=timeval+h)
 {
 ///////////////////////////////////////////NEWTON ALGORITHM/////////////////////////////////////////////////////////////////////////
  
 //Shift the solutions through the queue   
-      {
+      
           time_points[6] = time_points[5];
           time_points[5] = time_points[4];
           time_points[4] = time_points[3];
@@ -300,9 +308,10 @@ for(timeval=tstart;timeval<tstop;timeval=timeval+h)
           time_points[1] = time_points[0]; 
           time_points[0] = timeval;
 
-          for(i=0;i<6;i++)
-          printf("time_point[%d]  = %9.9g \n",i,time_points[i]);
-      }
+          for(i=0;i<=6;i++)
+          printf("S : time_point[%d]  = %9.9g \n",i,time_points[i]);
+
+
    for(i=1;i<=numEqns;i++)
       {
           XP6[i] = XP5[i];

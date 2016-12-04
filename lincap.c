@@ -143,7 +143,7 @@ fptr=fopen("out.csv","a");
 ////////// SUBSEQUENT LMS ITERATION(time points)///////////////////////
 //////// USE THE OLD ALPHA BETA AND NEW V TO GET NEW V'////////////////
          else {
-    if(time_step_count< 5)
+    if(time_step_count<5)
      { 
         order = time_step_count;
         predictor(vpast,order); 
@@ -153,7 +153,7 @@ fptr=fopen("out.csv","a");
         order = 5;
         predictor(vpast,order); 
       }
-       inst->vpred = vpast[0];
+             inst->vpred = vpast[0];
              inst->vdot = (inst->alpha)*vpast[1]+(inst->beta); 
 
          }
