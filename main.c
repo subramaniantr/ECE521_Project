@@ -400,6 +400,7 @@ while(conv_flag==0 || icheck==1){
     }
     spSolve( cktMatrix, Rhs, Sol );
 
+printf("H AFTER SOLVE = %9.9g,",h);
    iter_counter++;
 //Retrieving the number of Fillins in the current 
     Fillins = spFillinCount(cktMatrix);

@@ -185,11 +185,10 @@ double *XP6,*XP5,*XP4,*XP3,*XP2,*XP1,*XP0;
 
 
 
-int LELinCap(LinCap, numLinCap, Xk, h)
+int LELinCap(LinCap, numLinCap, Xk)
 lincap *LinCap[];
 int numLinCap;
 double* Xk;
-double h;
 {
   int flag,i,na,nb;
   double LE, vcor;
@@ -202,17 +201,26 @@ double h;
       na = inst->pNode;
       nb = inst->nNode;
       vcor = Xk[na]-Xk[nb];
-      LE = fabs(h*(inst->vpred - vcor)/(time_points[0]-time_points[order+1]));
-      printf("Local Error = %f \n\n", LE); 
-     if(LE > 18)
+      printf("Vcor = %f \n\n", vcor); 
+      printf("H = %9.9g \n\n", (time_points[0]-time_points[1])); 
+      printf("Vpred = %f \n\n", inst->vpred); 
+      printf("time0 = %f \n\n", time_points[0]); 
+      printf("timeo = %f \n\n", time_points[order+1]); 
+      LE = fabs((inst->vpred - vcor)/(time_points[0]-time_points[order+1])*(time_points[0]-time_points[1]));
+      printf("Local Error = %9.9g \n\n", LE); 
+     if(LE > 1e-5)
       {
          flag=2;
          break;
       }
-    else if(LE < 1)
+    else if(LE < 1e-7)
       {
          flag=1; 
       }
+    else
+     {flag = 0;      
+      break;
+     }
     }
    return flag;
 
