@@ -2,12 +2,11 @@
 #include "defs.h"
 
 
-void intgr8(x,xdot,h,alpha,beta,k)
+void intgr8(x,xdot,h,alpha,beta)
   double x[];
   double xdot;
   double h;
   double *alpha, *beta;
-  int k;
 { 
 int m,i,j;
 float t[7];
@@ -30,7 +29,7 @@ float C[7];
 //////////INITIALIZING COEFF VECTOR C BASED ON ORDER/////////////// 
              for(i=1;i<7;i++)
               {  
-                if(i<=k)
+                if(i<=order)
                   C[i]=1;
                 else
                   C[i]=0;
@@ -38,7 +37,7 @@ float C[7];
         
 //////////CALCULATING FIRST COEFFICIENT OF BDF OF ORDER K///////   
                   C[0]=0;
-             for(i=1;i<=k;i++) 
+             for(i=1;i<=order;i++) 
                 C[0] = C[0]+(t[0]-t[1])/(t[0]-t[i]);
         
         //CALCULATING ALPHA         
@@ -46,9 +45,9 @@ float C[7];
         
 //////////CALCULATING REMAINING COEFFICIENT OF BDF OF ORDER K////////////////
 
-              for(i=1;i<=k;i++)  //go through all o+1 
+              for(i=1;i<=order;i++)  //go through all o+1 
                 {
-                   for(j=1;j<=k;j++)  //go through all o+1 
+                   for(j=1;j<=order;j++)  //go through all o+1 
                       {
                        if(i!=j)           // BUT points where i and j don't cancel
                           {
@@ -68,7 +67,7 @@ float C[7];
   //      printf("beta[%d]  = %f \n",i,*beta);
         }
 
-        printf("ORDER  = %d\n", k);
+        printf("ORDER  = %d\n", order);
 
 
  }

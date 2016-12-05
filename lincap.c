@@ -93,8 +93,6 @@ double *XP6,*XP5,*XP4,*XP3,*XP2,*XP1,*XP0;
   double Capval;
   int na, nb;
   double vpast[7];
-FILE *fptr;
-fptr=fopen("out.csv","a");
 
   // code template outlining procedure for linear capacitor
   for(i = 1; i <= numLinCap; i++) {
@@ -115,13 +113,12 @@ fptr=fopen("out.csv","a");
       vpast[2] = XP2[na]-XP2[nb];
       vpast[1] = XP1[na]-XP1[nb];
  
-//    printf("%f \n",vpast[6]); 
-//    printf("%f \n",vpast[5]); 
-//    printf("%f \n",vpast[4]); 
-//    printf("%f \n",vpast[3]); 
-//    printf("%f \n",vpast[2]); 
-//    printf("%f \n",vpast[1]); 
-//    printf("%f \n",vpast[0]); 
+    printf("vpast[6] = %f \n",vpast[6]); 
+    printf("vpast[5] = %f \n",vpast[5]); 
+    printf("vpast[4] = %f \n",vpast[4]); 
+    printf("vpast[3] = %f \n",vpast[3]); 
+    printf("vpast[2] = %f \n",vpast[2]); 
+    printf("vpast[1] = %f \n",vpast[1]); 
 
 
 
@@ -136,7 +133,7 @@ fptr=fopen("out.csv","a");
              inst->vdot = 0;
              inst->alpha = 0;
              inst->beta = 0;
-             Vp = 0;
+             vpast[0] = 0.1;
              order = 1;
          }
 
@@ -145,21 +142,22 @@ fptr=fopen("out.csv","a");
          else {
     if(time_step_count<6)
      { 
-        order = time_step_count;
-        predictor(vpast,order); 
+        order = 1;
+        predictor(vpast); 
       }
     else
      { 
         order = 5;
-        predictor(vpast,order); 
+        predictor(vpast); 
       }
              inst->vpred = vpast[0];
+    printf("vpast[0] = %f \n",vpast[0]); 
              inst->vdot = (inst->alpha)*vpast[1]+(inst->beta); 
 
          }
 ////////////////UPDATE THE NEW ALPHA AND BETA//////////////////////////
 
-         intgr8(vpast,inst->vdot,h,&inst->alpha,&inst->beta,order);
+         intgr8(vpast,inst->vdot,h,&inst->alpha,&inst->beta);
       }//IF CONDITION ONLY EXECUTED WHEN NEWTON LOOP STARTS 
          //SEPARATING THE NEWTON FROM THE LMS
 
@@ -183,7 +181,6 @@ fptr=fopen("out.csv","a");
 
               }
 
-fclose(fptr);
 }
 
 
@@ -205,14 +202,14 @@ double h;
       na = inst->pNode;
       nb = inst->nNode;
       vcor = Xk[na]-Xk[nb];
-      LE = abs(h*(inst->vpred - vcor)/(time_points[0]-time_points[order]));
-      printf("Local Error = %f\n\n", LE); 
-     if(LE > 0.5)
+      LE = fabs(h*(inst->vpred - vcor)/(time_points[0]-time_points[order+1]));
+      printf("Local Error = %f \n\n", LE); 
+     if(LE > 18)
       {
          flag=2;
          break;
       }
-    else if(LE <0.1)
+    else if(LE < 1)
       {
          flag=1; 
       }

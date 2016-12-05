@@ -1,6 +1,9 @@
 
-a = csvread('out.csv');
-plot(a(:,1),a(:,3))
+a = csvread('H.csv');
+H = a(:,1);
+l = numel(H);
+y = 1:l;
+plot(y,H);
 hold on
 grid on
 set(gca,'LineWidth',2)

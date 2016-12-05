@@ -3,5 +3,5 @@ make clean
 make myspice
 rm -rf out.csv
 clear
-myspice test19.ckt
+myspice test19.ckt 
 rm -rf *o sparse/*o myspice

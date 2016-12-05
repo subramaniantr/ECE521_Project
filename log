@@ -1,0 +1,618 @@
+r1	1	2	1.000000
+v1	1	0	5.000000
+c1	2	0	0.000001
+TCOUNT = 0 
+
+vpast[6] = 0.000000 
+vpast[5] = 0.000000 
+vpast[4] = 0.000000 
+vpast[3] = 0.000000 
+vpast[2] = 0.000000 
+vpast[1] = 0.000000 
+vpast[0] = 0.000000 
+0.000000 
+ALPHA_BDF[0]  = 1.000000 
+ALPHA_BDF[1]  = -1.000000 
+ALPHA_BDF[2]  = 0.000000 
+ALPHA_BDF[3]  = 0.000000 
+ALPHA_BDF[4]  = 0.000000 
+ALPHA_BDF[5]  = 0.000000 
+ALPHA_BDF[6]  = 0.000000 
+ORDER  = 1
+
+         1        -1         1
+        -1         3       ...
+         1       ...       ...
+
+
+
+RHS
+         0
+         0
+         5
+ Total Number of Fillins in the iteration no   1 is  =   0, 
+vpast[6] = 0.000000 
+vpast[5] = 0.000000 
+vpast[4] = 0.000000 
+vpast[3] = 0.000000 
+vpast[2] = 0.000000 
+vpast[1] = 0.000000 
+vpast[0] = 0.000000 
+0.000000 
+
+         1        -1         1
+        -1         3       ...
+         1       ...       ...
+
+
+
+RHS
+         0
+         0
+         5
+ Total Number of Fillins in the iteration no   2 is  =   0, 
+Local Error =  1.11e+04
+
+HFLAG = 2
+
+
+*****************
+        0,TCOUNT = 1 
+
+vpast[6] = 0.000000 
+vpast[5] = 0.000000 
+vpast[4] = 0.000000 
+vpast[3] = 0.000000 
+vpast[2] = 0.000000 
+vpast[1] = 1.666667 
+vpast[0] = 0.000000 
+0.000000 
+GAMMA_LGRNGE[1] = 2.000000 
+GAMMA_LGRNGE[2] = -1.000000 
+GAMMA_LGRNGE[3] = 0.000000 
+GAMMA_LGRNGE[4] = 0.000000 
+GAMMA_LGRNGE[5] = 0.000000 
+GAMMA_LGRNGE[6] = 0.000000 
+ALPHA_BDF[0]  = 1.000000 
+ALPHA_BDF[1]  = -1.000000 
+ALPHA_BDF[2]  = 0.000000 
+ALPHA_BDF[3]  = 0.000000 
+ALPHA_BDF[4]  = 0.000000 
+ALPHA_BDF[5]  = 0.000000 
+ALPHA_BDF[6]  = 0.000000 
+ORDER  = 1
+
+         1        -1         1
+        -1         3       ...
+         1       ...       ...
+
+
+
+RHS
+         0
+      3.33
+         5
+ Total Number of Fillins in the iteration no   1 is  =   0, 
+vpast[6] = 0.000000 
+vpast[5] = 0.000000 
+vpast[4] = 0.000000 
+vpast[3] = 0.000000 
+vpast[2] = 0.000000 
+vpast[1] = 1.666667 
+vpast[0] = 0.000000 
+0.000000 
+
+         1        -1         1
+        -1         3       ...
+         1       ...       ...
+
+
+
+RHS
+         0
+      3.33
+         5
+ Total Number of Fillins in the iteration no   2 is  =   0, 
+Local Error =  2.47e+03
+
+HFLAG = 2
+
+
+*****************
+    5e-07,TCOUNT = 2 
+
+vpast[6] = 0.000000 
+vpast[5] = 0.000000 
+vpast[4] = 0.000000 
+vpast[3] = 0.000000 
+vpast[2] = 1.666667 
+vpast[1] = 2.777778 
+vpast[0] = 0.000000 
+0.000000 
+GAMMA_LGRNGE[1] = 3.000000 
+GAMMA_LGRNGE[2] = -3.000000 
+GAMMA_LGRNGE[3] = 1.000000 
+GAMMA_LGRNGE[4] = 0.000000 
+GAMMA_LGRNGE[5] = 0.000000 
+GAMMA_LGRNGE[6] = 0.000000 
+ALPHA_BDF[0]  = 1.500000 
+ALPHA_BDF[1]  = -2.000000 
+ALPHA_BDF[2]  = 0.500000 
+ALPHA_BDF[3]  = 0.000000 
+ALPHA_BDF[4]  = 0.000000 
+ALPHA_BDF[5]  = 0.000000 
+ALPHA_BDF[6]  = 0.000000 
+ORDER  = 2
+
+         1        -1         1
+        -1         4       ...
+         1       ...       ...
+
+
+
+RHS
+         0
+      9.44
+         5
+ Total Number of Fillins in the iteration no   1 is  =   0, 
+vpast[6] = 0.000000 
+vpast[5] = 0.000000 
+vpast[4] = 0.000000 
+vpast[3] = 0.000000 
+vpast[2] = 1.666667 
+vpast[1] = 2.777778 
+vpast[0] = 0.000000 
+0.000000 
+
+         1        -1         1
+        -1         4       ...
+         1       ...       ...
+
+
+
+RHS
+         0
+      9.44
+         5
+ Total Number of Fillins in the iteration no   2 is  =   0, 
+Local Error =       386
+
+HFLAG = 2
+
+
+*****************
+    1e-06,TCOUNT = 3 
+
+vpast[6] = 0.000000 
+vpast[5] = 0.000000 
+vpast[4] = 0.000000 
+vpast[3] = 1.666667 
+vpast[2] = 2.777778 
+vpast[1] = 3.611111 
+vpast[0] = 0.000000 
+0.000000 
+GAMMA_LGRNGE[1] = 4.000000 
+GAMMA_LGRNGE[2] = -6.000001 
+GAMMA_LGRNGE[3] = 4.000001 
+GAMMA_LGRNGE[4] = -1.000000 
+GAMMA_LGRNGE[5] = 0.000000 
+GAMMA_LGRNGE[6] = 0.000000 
+ALPHA_BDF[0]  = 1.833333 
+ALPHA_BDF[1]  = -3.000000 
+ALPHA_BDF[2]  = 1.500000 
+ALPHA_BDF[3]  = -0.333333 
+ALPHA_BDF[4]  = 0.000000 
+ALPHA_BDF[5]  = 0.000000 
+ALPHA_BDF[6]  = 0.000000 
+ORDER  = 3
+
+         1        -1         1
+        -1      4.67       ...
+         1       ...       ...
+
+
+
+RHS
+         0
+      14.4
+         5
+ Total Number of Fillins in the iteration no   1 is  =   0, 
+vpast[6] = 0.000000 
+vpast[5] = 0.000000 
+vpast[4] = 0.000000 
+vpast[3] = 1.666667 
+vpast[2] = 2.777778 
+vpast[1] = 3.611111 
+vpast[0] = 0.000000 
+0.000000 
+
+         1        -1         1
+        -1      4.67       ...
+         1       ...       ...
+
+
+
+RHS
+         0
+      14.4
+         5
+ Total Number of Fillins in the iteration no   2 is  =   0, 
+Local Error =       154
+
+HFLAG = 2
+
+
+*****************
+  1.5e-06,TCOUNT = 4 
+
+vpast[6] = 0.000000 
+vpast[5] = 0.000000 
+vpast[4] = 1.666667 
+vpast[3] = 2.777778 
+vpast[2] = 3.611111 
+vpast[1] = 4.166667 
+vpast[0] = 0.000000 
+0.000000 
+GAMMA_LGRNGE[1] = 4.999999 
+GAMMA_LGRNGE[2] = -9.999997 
+GAMMA_LGRNGE[3] = 9.999998 
+GAMMA_LGRNGE[4] = -5.000000 
+GAMMA_LGRNGE[5] = 1.000000 
+GAMMA_LGRNGE[6] = 0.000000 
+ALPHA_BDF[0]  = 2.083333 
+ALPHA_BDF[1]  = -3.999999 
+ALPHA_BDF[2]  = 2.999999 
+ALPHA_BDF[3]  = -1.333333 
+ALPHA_BDF[4]  = 0.250000 
+ALPHA_BDF[5]  = 0.000000 
+ALPHA_BDF[6]  = 0.000000 
+ORDER  = 4
+
+         1        -1         1
+        -1      5.17       ...
+         1       ...       ...
+
+
+
+RHS
+         0
+      18.2
+         5
+ Total Number of Fillins in the iteration no   1 is  =   0, 
+vpast[6] = 0.000000 
+vpast[5] = 0.000000 
+vpast[4] = 1.666667 
+vpast[3] = 2.777778 
+vpast[2] = 3.611111 
+vpast[1] = 4.166667 
+vpast[0] = 0.000000 
+0.000000 
+
+         1        -1         1
+        -1      5.17       ...
+         1       ...       ...
+
+
+
+RHS
+         0
+      18.2
+         5
+ Total Number of Fillins in the iteration no   2 is  =   0, 
+Local Error =        83
+
+HFLAG = 2
+
+
+*****************
+    2e-06,TCOUNT = 5 
+
+vpast[6] = 0.000000 
+vpast[5] = 1.666667 
+vpast[4] = 2.777778 
+vpast[3] = 3.611111 
+vpast[2] = 4.166667 
+vpast[1] = 4.498208 
+vpast[0] = 0.000000 
+0.000000 
+GAMMA_LGRNGE[1] = 5.999999 
+GAMMA_LGRNGE[2] = -14.999996 
+GAMMA_LGRNGE[3] = 19.999990 
+GAMMA_LGRNGE[4] = -14.999994 
+GAMMA_LGRNGE[5] = 5.999999 
+GAMMA_LGRNGE[6] = -1.000000 
+ALPHA_BDF[0]  = 2.283333 
+ALPHA_BDF[1]  = -5.000000 
+ALPHA_BDF[2]  = 4.999999 
+ALPHA_BDF[3]  = -3.333332 
+ALPHA_BDF[4]  = 1.249999 
+ALPHA_BDF[5]  = -0.200000 
+ALPHA_BDF[6]  = 0.000000 
+ORDER  = 5
+
+         1        -1         1
+        -1      5.57       ...
+         1       ...       ...
+
+
+
+RHS
+         0
+      21.1
+         5
+ Total Number of Fillins in the iteration no   1 is  =   0, 
+vpast[6] = 0.000000 
+vpast[5] = 1.666667 
+vpast[4] = 2.777778 
+vpast[3] = 3.611111 
+vpast[2] = 4.166667 
+vpast[1] = 4.498208 
+vpast[0] = 0.000000 
+0.000000 
+
+         1        -1         1
+        -1      5.57       ...
+         1       ...       ...
+
+
+
+RHS
+         0
+      21.1
+         5
+ Total Number of Fillins in the iteration no   2 is  =   0, 
+Local Error =        43
+
+HFLAG = 2
+
+
+*****************
+  2.5e-06,TCOUNT = 6 
+
+vpast[6] = 1.666667 
+vpast[5] = 2.777778 
+vpast[4] = 3.611111 
+vpast[3] = 4.166667 
+vpast[2] = 4.498208 
+vpast[1] = 4.690725 
+vpast[0] = 0.000000 
+0.000000 
+GAMMA_LGRNGE[1] = 6.000004 
+GAMMA_LGRNGE[2] = -15.000013 
+GAMMA_LGRNGE[3] = 20.000015 
+GAMMA_LGRNGE[4] = -15.000008 
+GAMMA_LGRNGE[5] = 6.000003 
+GAMMA_LGRNGE[6] = -1.000001 
+ALPHA_BDF[0]  = 2.283334 
+ALPHA_BDF[1]  = -5.000003 
+ALPHA_BDF[2]  = 5.000005 
+ALPHA_BDF[3]  = -3.333337 
+ALPHA_BDF[4]  = 1.250001 
+ALPHA_BDF[5]  = -0.200000 
+ALPHA_BDF[6]  = 0.000000 
+ORDER  = 5
+
+         1        -1         1
+        -1      5.57       ...
+         1       ...       ...
+
+
+
+RHS
+         0
+      21.8
+         5
+ Total Number of Fillins in the iteration no   1 is  =   0, 
+vpast[6] = 1.666667 
+vpast[5] = 2.777778 
+vpast[4] = 3.611111 
+vpast[3] = 4.166667 
+vpast[2] = 4.498208 
+vpast[1] = 4.690725 
+vpast[0] = 0.000000 
+0.000000 
+
+         1        -1         1
+        -1      5.57       ...
+         1       ...       ...
+
+
+
+RHS
+         0
+      21.8
+         5
+ Total Number of Fillins in the iteration no   2 is  =   0, 
+Local Error =         1
+
+HFLAG = 2
+
+
+*****************
+    3e-06,TCOUNT = 7 
+
+vpast[6] = 2.777778 
+vpast[5] = 3.611111 
+vpast[4] = 4.166667 
+vpast[3] = 4.498208 
+vpast[2] = 4.690725 
+vpast[1] = 4.811908 
+vpast[0] = 0.000000 
+0.000000 
+GAMMA_LGRNGE[1] = 5.999997 
+GAMMA_LGRNGE[2] = -14.999997 
+GAMMA_LGRNGE[3] = 20.000002 
+GAMMA_LGRNGE[4] = -15.000000 
+GAMMA_LGRNGE[5] = 5.999999 
+GAMMA_LGRNGE[6] = -1.000000 
+ALPHA_BDF[0]  = 2.283333 
+ALPHA_BDF[1]  = -4.999998 
+ALPHA_BDF[2]  = 4.999998 
+ALPHA_BDF[3]  = -3.333333 
+ALPHA_BDF[4]  = 1.250000 
+ALPHA_BDF[5]  = -0.200000 
+ALPHA_BDF[6]  = 0.000000 
+ORDER  = 5
+
+         1        -1         1
+        -1      5.57       ...
+         1       ...       ...
+
+
+
+RHS
+         0
+      22.2
+         5
+ Total Number of Fillins in the iteration no   1 is  =   0, 
+vpast[6] = 2.777778 
+vpast[5] = 3.611111 
+vpast[4] = 4.166667 
+vpast[3] = 4.498208 
+vpast[2] = 4.690725 
+vpast[1] = 4.811908 
+vpast[0] = 0.000000 
+0.000000 
+
+         1        -1         1
+        -1      5.57       ...
+         1       ...       ...
+
+
+
+RHS
+         0
+      22.2
+         5
+ Total Number of Fillins in the iteration no   2 is  =   0, 
+Local Error =         1
+
+HFLAG = 2
+
+
+*****************
+  3.5e-06,TCOUNT = 8 
+
+vpast[6] = 3.611111 
+vpast[5] = 4.166667 
+vpast[4] = 4.498208 
+vpast[3] = 4.690725 
+vpast[2] = 4.811908 
+vpast[1] = 4.891195 
+vpast[0] = 0.000000 
+0.000000 
+GAMMA_LGRNGE[1] = 6.000000 
+GAMMA_LGRNGE[2] = -14.999991 
+GAMMA_LGRNGE[3] = 19.999992 
+GAMMA_LGRNGE[4] = -14.999997 
+GAMMA_LGRNGE[5] = 6.000000 
+GAMMA_LGRNGE[6] = -1.000000 
+ALPHA_BDF[0]  = 2.283333 
+ALPHA_BDF[1]  = -5.000000 
+ALPHA_BDF[2]  = 4.999998 
+ALPHA_BDF[3]  = -3.333331 
+ALPHA_BDF[4]  = 1.250000 
+ALPHA_BDF[5]  = -0.200000 
+ALPHA_BDF[6]  = 0.000000 
+ORDER  = 5
+
+         1        -1         1
+        -1      5.57       ...
+         1       ...       ...
+
+
+
+RHS
+         0
+      22.5
+         5
+ Total Number of Fillins in the iteration no   1 is  =   0, 
+vpast[6] = 3.611111 
+vpast[5] = 4.166667 
+vpast[4] = 4.498208 
+vpast[3] = 4.690725 
+vpast[2] = 4.811908 
+vpast[1] = 4.891195 
+vpast[0] = 0.000000 
+0.000000 
+
+         1        -1         1
+        -1      5.57       ...
+         1       ...       ...
+
+
+
+RHS
+         0
+      22.5
+         5
+ Total Number of Fillins in the iteration no   2 is  =   0, 
+Local Error =         0
+
+HFLAG = 1
+
+
+*****************
+    4e-06,TCOUNT = 9 
+
+vpast[6] = 4.166667 
+vpast[5] = 4.498208 
+vpast[4] = 4.690725 
+vpast[3] = 4.811908 
+vpast[2] = 4.891195 
+vpast[1] = 4.937519 
+vpast[0] = 0.000000 
+0.000000 
+GAMMA_LGRNGE[1] = 6.000004 
+GAMMA_LGRNGE[2] = -15.000010 
+GAMMA_LGRNGE[3] = 20.000010 
+GAMMA_LGRNGE[4] = -15.000006 
+GAMMA_LGRNGE[5] = 6.000005 
+GAMMA_LGRNGE[6] = -1.000001 
+ALPHA_BDF[0]  = 2.283334 
+ALPHA_BDF[1]  = -5.000003 
+ALPHA_BDF[2]  = 5.000004 
+ALPHA_BDF[3]  = -3.333336 
+ALPHA_BDF[4]  = 1.250000 
+ALPHA_BDF[5]  = -0.200000 
+ALPHA_BDF[6]  = 0.000000 
+ORDER  = 5
+
+         1        -1         1
+        -1      5.57       ...
+         1       ...       ...
+
+
+
+RHS
+         0
+      22.6
+         5
+ Total Number of Fillins in the iteration no   1 is  =   0, 
+vpast[6] = 4.166667 
+vpast[5] = 4.498208 
+vpast[4] = 4.690725 
+vpast[3] = 4.811908 
+vpast[2] = 4.891195 
+vpast[1] = 4.937519 
+vpast[0] = 0.000000 
+0.000000 
+
+         1        -1         1
+        -1      5.57       ...
+         1       ...       ...
+
+
+
+RHS
+         0
+      22.6
+         5
+ Total Number of Fillins in the iteration no   2 is  =   0, 
+Local Error =         0
+
+HFLAG = 1
+
+
+*****************
+  4.5e-06, Total Number of Iterations=   2, 

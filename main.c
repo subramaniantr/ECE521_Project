@@ -276,6 +276,8 @@ char **av;
 h = 5e-7;
 tstart = 0;
 tstop  = 5e-6;
+FILE *fptr1;
+fptr1=fopen("H.csv","a");
 FILE *fptr;
 fptr=fopen("out.csv","a");
 tcount = 0;
@@ -302,8 +304,8 @@ for(timeval=tstart;timeval<tstop;timeval=timeval+h)
           time_points[0] = timeval;
 
 //          PRINTING SHIFTED TIME FOR TESTING
-//          for(i=0;i<=6;i++)
-//          printf("Shift : time_point[%d]  = %9.9g \n",i,time_points[i]);
+          for(i=0;i<=6;i++)
+          printf("Shift : time_point[%d]  = %9.9g \n",i,time_points[i]);
 
 
    for(i=1;i<=numEqns;i++)
@@ -314,8 +316,15 @@ for(timeval=tstart;timeval<tstop;timeval=timeval+h)
           XP3[i] = XP2[i];
           XP2[i] = XP1[i];
           XP1[i] = Sol[i]; 
+  //        printf("XP6[%d]  = %9.9g \n",i,XP6[i]);
+  //        printf("XP5[%d]  = %9.9g \n",i,XP5[i]);
+  //        printf("XP4[%d]  = %9.9g \n",i,XP4[i]);
+  //        printf("XP3[%d]  = %9.9g \n",i,XP3[i]);
+  //        printf("XP2[%d]  = %9.9g \n",i,XP2[i]);
+  //        printf("XP1[%d]  = %9.9g \n",i,XP1[i]);
        }
 printf("TCOUNT = %d \n\n",tcount);
+int temp_counter = 0;
 hflag = 2;
 while(hflag == 2)
 {//FOR TIME STEP CORRECTION
@@ -374,15 +383,15 @@ while(conv_flag==0 || icheck==1){
    for(i=1;i<=numEqns;i++)
         Sol_old[i]=Sol[i];
  
-    /* print circuit matrix */
-    printf("\n");
-    spPrint(cktMatrix, 0, 1, 0);
-
-    /* print Rhs vector */
-    printf("\nRHS\n");
-    for(i = 1; i <=numEqns; i++) {
-        printf(" %9.3g\n",Rhs[i]);
-    }
+//    /* print circuit matrix */
+//    printf("\n");
+//    spPrint(cktMatrix, 0, 1, 0);
+//
+//    /* print Rhs vector */
+//    printf("\nRHS\n");
+//    for(i = 1; i <=numEqns; i++) {
+//        printf(" %9.3g\n",Rhs[i]);
+//    }
     /* compute DC solution */
     /* first Factor the matrix and then Forward/Back solve */
     error = spFactor( cktMatrix );
@@ -394,7 +403,7 @@ while(conv_flag==0 || icheck==1){
    iter_counter++;
 //Retrieving the number of Fillins in the current 
     Fillins = spFillinCount(cktMatrix);
-    printf(" Total Number of Fillins in the iteration no %3d is  = %3d, \n",iter_counter, Fillins);
+//    printf(" Total Number of Fillins in the iteration no %3d is  = %3d, \n",iter_counter, Fillins);
     
     
 
@@ -431,21 +440,31 @@ while(conv_flag==0 || icheck==1){
 //////////////////////LOCAL  ERROR CALCULATION ////////////////////////
 
 
-hflag = LELinCap(LinCap, numLinCap, Sol);
-printf("HFLAG = %d\n\n\n",hflag);
-printf("*****************\n",hflag);
-
-
-
-//    LOGIC FOR TIME STEP CORRECTION
-//
-//    if(hflag == 2)
-//    h = h/8;
-//   else
-//    if(hflag == 1)
-//      h = 2*h;
-//   else
-     hflag = 0;
+           hflag = LELinCap(LinCap, numLinCap, Sol);
+           printf("HFLAG = %d\n\n\n",hflag);
+           printf("*****************\n",hflag);
+           fprintf(fptr1," %9.9g\n",h);
+           
+           
+           //    LOGIC FOR TIME STEP CORRECTION
+           
+           
+               if(hflag == 2)
+             {
+                 h = h/8;
+                 printf("H = %9.9g \n", h);
+                 printf("TIME_POINTS[0] = %9.9g \n", time_points[0]);
+             }
+               else
+                  if(hflag == 1)
+                       h = MIN(2*h,1e-7);
+                   else
+                       break;
+           //if(temp_counter == 8)
+           //exit(0);
+           
+           
+           temp_counter++;
 }//FOR TIME STEP CORRECTION
 
 ///////////PRINT WARNING : ACCURACY OF NUMBERS WILL AFFECT THE PLOTS///////////////
@@ -454,14 +473,16 @@ fprintf(fptr,"%9.9g,",timeval);
 for(i = 1; i<= numEqns; i++) {
     fprintf(fptr,"%9.9g, ",Sol[i]);
     }
+fprintf(fptr,"%9.9g,",h);
 fprintf(fptr,"\n");
 
-
+printf("timeval = %9.9g \n",timeval);
 tcount++;
 
 } //END OF TIME
 
 printf(" Total Number of Iterations= %3d, \n", iter_counter);
 fclose(fptr);
+fclose(fptr1);
 
 }
