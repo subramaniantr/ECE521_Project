@@ -1,4 +1,3 @@
-
 #include "macros.h"
 #include "math.h"
 #include "sparse/spMatrix.h"

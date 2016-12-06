@@ -275,7 +275,7 @@ char **av;
 ///////////////////////DEFINING TIME STEPS AND MAX COUNTS//////////////////////////////////////////////////////
 h = 5e-7;
 tstart = 0;
-tstop  = 5e-6;
+tstop  = 5e-3;
 FILE *fptr1;
 fptr1=fopen("H.csv","a");
 FILE *fptr;
